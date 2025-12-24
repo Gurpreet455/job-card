@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Job Card Dashboard</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS VARIABLES & RESET */
+        :root {
+            --primary_v101: #7b1d1d;
+            --bg-light_v101: #f4f7fa;
+            --white_v101: #ffffff;
+            --text-main_v101: #1e293b;
+            --text-muted_v101: #64748b;
+            --border-color_v101: #e2e8f0;
+            --accent-blue_v101: #2563eb;
+            --radius_v101: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light_v101);
+            color: var(--text-main_v101);
+            overflow-x: hidden;
+        }
+
+        .view-hidden_v101 { display: none !important; }
+
+        /* HEADER STYLES */
+        .header_v101 {
+            background: var(--primary_v101);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-left_v101 { display: flex; align-items: center; gap: 10px; }
+        .logo-icon_v101 { background: rgba(255,255,255,0.2); padding: 5px; border-radius: 6px; display: flex; }
+        .header-title_v101 { font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
+        .user-badge_v101 { background: white; color: var(--primary_v101); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 900; font-size: 12px; }
+
+        /* MAIN WRAPPER */
+        .main-container_v101 { width: 100%; padding: 10px; max-width: 100%; }
+
+        /* FILTERS SECTION */
+        .filter-grid_v101 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            background: white;
+            padding: 15px;
+            border-radius: var(--radius_v101);
+            border: 1px solid var(--border-color_v101);
+            margin-bottom: 15px;
+        }
+
+        .form-group_v101 { display: flex; flex-direction: column; gap: 4px; }
+        .label_v101 { font-size: 9px; font-weight: 800; text-transform: uppercase; color: var(--text-muted_v101); letter-spacing: 0.5px; }
+        
+        .select_v101, .input_v101 {
+            width: 100%;
+            height: 32px; /* Compact height */
+            padding: 0 10px;
+            border: 1px solid var(--border-color_v101);
+            border-radius: var(--radius_v101);
+            font-size: 12px;
+            font-weight: 600;
+            outline: none;
+            background: #fdfdfd;
+        }
+        .select_v101:focus, .input_v101:focus { border-color: var(--accent-blue_v101); background: white; }
+
+        /* TABS SECTION */
+        .tabs-wrap_v101 {
+            width: 100%;
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: var(--radius_v101);
+            display: flex;
+            gap: 4px;
+            margin-bottom: 15px;
+        }
+        .tab-btn_v101 {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: var(--radius_v101);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            background: transparent;
+            color: var(--text-muted_v101);
+        }
+        .tab-btn_v101.active { background: #ef4444; color: white; }
+
+        /* STATUS CARDS */
+        .cards-grid_v101 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .status-card_v101 {
+            background: white;
+            border-radius: var(--radius_v101);
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color_v101);
+            cursor: pointer;
+            z-index: 1;
+        }
+        .circle-bg_v101 {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            z-index: -1;
+            transition: transform 0.6s, opacity 0.3s;
+            opacity: 0.1;
+        }
+        .card-blue_v101 .circle-bg_v101 { background: #3b82f6; }
+        .card-amber_v101 .circle-bg_v101 { background: #f59e0b; }
+        .card-emerald_v101 .circle-bg_v101 { background: #10b981; }
+        .card-rose_v101 .circle-bg_v101 { background: #f43f5e; }
+
+        .status-card_v101:hover .circle-bg_v101 { transform: scale(15); opacity: 1; }
+        .status-card_v101:hover * { color: white !important; }
+
+        .card-icon-box_v101 { background: #f1f5f9; padding: 8px; border-radius: 6px; font-size: 18px; }
+        .card-val_v101 { font-size: 20px; font-weight: 800; display: block; }
+
+        /* DATA GRID */
+        .table-container_v101 {
+            background: white;
+            border-radius: var(--radius_v101);
+            border: 1px solid var(--border-color_v101);
+            overflow: hidden;
+        }
+        .table-header_v101 { padding: 12px; border-bottom: 1px solid #eee; background: #f8fafc; display: flex; align-items: center; gap: 10px; }
+        .indicator_v101 { width: 4px; height: 14px; background: var(--accent-blue_v101); border-radius: 10px; }
+        
+        .master-table_v101 { width: 100%; border-collapse: collapse; text-align: center; }
+        .master-table_v101 th { font-size: 9px; font-weight: 900; color: var(--text-muted_v101); text-transform: uppercase; padding: 10px; border-bottom: 2px solid #f1f5f9; }
+        .master-table_v101 td { padding: 10px; font-size: 11px; font-weight: 600; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+        .master-table_v101 tr:hover { background: #f9fafb; }
+        
+        .status-pill_v101 { background: #198b58; padding: 5px 15px; border-radius: 20px; color: white; font-size: 10px; }
+        .btn-action_v101 { border: none; background: #f1f5f9; color: var(--text-muted_v101); padding: 5px; border-radius: 6px; cursor: pointer; }
+        .btn-action_v101:hover { background: var(--accent-blue_v101); color: white; }
+
+        /* DETAIL VIEW LAYOUT */
+        .detail-layout_v101 { display: flex; height: calc(100vh - 56px); overflow: hidden; }
+
+        /* SIDEBAR (BRIGHT) */
+        .sidebar-detail_v101 {
+            width: 300px;
+            background: #ffffff;
+            border-right: 1px solid var(--border-color_v101);
+            overflow-y: auto;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+        .sidebar-collapsed_v101 { width: 60px; }
+
+        .sidebar-toggle_v101 { padding: 12px; text-align: center; border-bottom: 1px solid #eee; cursor: pointer; color: var(--text-muted_v101); }
+        .sidebar-toggle_v101:hover { background: #f8fafc; }
+
+        .accordion-item_v101 { border-bottom: 1px solid #eee; }
+        .acc-header_v101 { 
+            padding: 10px 15px; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-size: 9px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            color: #475569;
+            background: #f8fafc;
+        }
+        .acc-header_v101:hover { background: #f1f5f9; }
+        .sidebar-collapsed_v101 .acc-text_v101, .sidebar-collapsed_v101 .acc-icon_v101 { display: none; }
+        .short-code_v101 { display: none; font-weight: 900; color: var(--accent-blue_v101); font-size: 14px; }
+        .sidebar-collapsed_v101 .short-code_v101 { display: block; }
+        .sidebar-collapsed_v101 .acc-header_v101 { justify-content: center; padding: 15px 0; }
+
+        /* FIX: Content Hiding logic when sidebar is collapsed */
+        .acc-content_v101 { padding: 12px; display: none; background: white; }
+        .acc-content_v101.active { display: block; }
+        .sidebar-collapsed_v101 .acc-content_v101 { display: none !important; }
+
+        .side-info-box_v101 { background: #f8fafc; border: 1px solid #eee; border-radius: 6px; padding: 6px 10px; margin-bottom: 6px; }
+        .side-label_v101 { font-size: 8px; color: #94a3b8; text-transform: uppercase; font-weight: 800; margin-bottom: 2px; }
+        .side-value_v101 { font-size: 10px; color: var(--text-main_v101); font-weight: 700; word-break: break-all; }
+
+        /* CONTENT AREA */
+        .main-content_v101 { flex: 1; padding: 15px; overflow-y: auto; background: #f4f7fa; }
+        .detail-card_v101 { background: white; padding: 20px; border-radius: var(--radius_v101); border: 1px solid var(--border-color_v101); margin-bottom: 15px; }
+        .card-title-wrap_v101 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .title_v101 { font-size: 14px; font-weight: 800; color: var(--text-main_v101); }
+
+        .form-row_v101 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        
+        /* Grid Tables Inside Content */
+        .inner-table_v101 { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; border: 1px solid #eee; }
+        .inner-table_v101 th { background: #f8fafc; padding: 8px; font-size: 9px; text-transform: uppercase; text-align: left; border-bottom: 1px solid #eee; }
+        .inner-table_v101 td { padding: 8px; border-bottom: 1px solid #eee; font-weight: 600; }
+
+        /* RADIO BUTTONS */
+        .radio-group_v101 { display: flex; gap: 8px; }
+        .radio-item_v101 { flex: 1; position: relative; }
+        .radio-item_v101 input { position: absolute; opacity: 0; cursor: pointer; }
+        .radio-label_v101 { display: block; padding: 6px; text-align: center; background: #f8fafc; border: 1px solid #eee; border-radius: var(--radius_v101); font-size: 10px; font-weight: 800; cursor: pointer; }
+        .radio-item_v101 input:checked + .radio-label_v101 { background: var(--accent-blue_v101); color: white; border-color: var(--accent-blue_v101); }
+
+        /* UPLOAD SECTION */
+        .upload-box_v101 { border: 2px dashed #e2e8f0; padding: 15px; text-align: center; border-radius: var(--radius_v101); cursor: pointer; background: #fbfbfb; }
+        .upload-box_v101:hover { border-color: var(--accent-blue_v101); }
+
+        /* BUTTONS */
+        .btn-submit_v101 { background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: var(--radius_v101); font-weight: 800; text-transform: uppercase; font-size: 11px; cursor: pointer; }
+        .btn-submit_v101:hover { background: #059669; }
+
+        /* Dark Section for closure */
+        .closure-section_v101 { background: #1e293b; color: white; }
+        .closure-section_v101 .title_v101 { color: white; }
+        .closure-section_v101 .label_v101 { color: #94a3b8; }
+        .closure-section_v101 .input_v101, .closure-section_v101 .select_v101 { background: #334155; border-color: #475569; color: white; }
+
+        /* ================= RESPONSIVENESS ================= */
+        @media (max-width: 1024px) {
+            .cards-grid_v101 { grid-template-columns: repeat(2, 1fr); }
+            .form-row_v101 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .filter-grid_v101 { grid-template-columns: 1fr; }
+            .cards-grid_v101 { grid-template-columns: 1fr; }
+            .form-row_v101 { grid-template-columns: 1fr; }
+            .sidebar-detail_v101 { 
+                position: fixed; 
+                z-index: 99; 
+                left: 0; 
+                top: 56px; 
+                height: calc(100vh - 56px);
+            }
+            .sidebar-collapsed_v101 { left: -60px; } /* Hide completely on mobile if collapsed */
+            .main-content_v101 { padding: 10px; }
+            .header-title_v101 { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .tabs-wrap_v101 { flex-direction: column; }
+            .master-table_v101 th, .master-table_v101 td { font-size: 9px; padding: 6px; }
+            .header_v101 { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- MAIN LIST VIEW -->
+    <!-- ========================================== -->
+    <div id="listView_v101">
+        <header class="header_v101">
+            <div class="header-left_v101">
+                <div class="logo-icon_v101">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a2 2 0 0 1 2.83 0l.3.3a2 2 0 0 1 0 2.83l-3.77 3.77"/><path d="m2 22 10-10"/><path d="m9 2 5 5-9 9-5-5 9-9z"/></svg>
+                </div>
+                <h1 class="header-title_v101">Job Card Console</h1>
+            </div>
+            <div class="user-badge_v101">JS</div>
+        </header>
+
+        <div class="main-container_v101">
+            <!-- GLOBAL FILTERS -->
+            <div class="filter-grid_v101">
+                <div class="form-group_v101">
+                    <label class="label_v101">Country</label>
+                    <select class="select_v101"><option>India</option></select>
+                </div>
+                <div class="form-group_v101">
+                    <label class="label_v101">State / Region</label>
+                    <select class="select_v101"><option>Delhi NCR</option></select>
+                </div>
+                <div class="form-group_v101">
+                    <label class="label_v101">Authorized Dealer</label>
+                    <select class="select_v101"><option>All Dealers</option></select>
+                </div>
+            </div>
+
+            <!-- TABS -->
+            <div class="tabs-wrap_v101">
+                <button class="tab-btn_v101 active">Job Card List</button>
+                <button class="tab-btn_v101">Complaint List</button>
+            </div>
+
+            <!-- STATUS CARDS -->
+            <div class="cards-grid_v101">
+                <div class="status-card_v101 card-blue_v101">
+                    <div class="circle-bg_v101"></div>
+                    <div class="card-icon-box_v101">📋</div>
+                    <div>
+                        <p class="label_v101">In Progress</p>
+                        <span class="card-val_v101">42</span>
+                    </div>
+                </div>
+                <div class="status-card_v101 card-amber_v101">
+                    <div class="circle-bg_v101"></div>
+                    <div class="card-icon-box_v101">⏳</div>
+                    <div>
+                        <p class="label_v101">Pending</p>
+                        <span class="card-val_v101">15</span>
+                    </div>
+                </div>
+                <div class="status-card_v101 card-emerald_v101">
+                    <div class="circle-bg_v101"></div>
+                    <div class="card-icon-box_v101">✅</div>
+                    <div>
+                        <p class="label_v101">Ready</p>
+                        <span class="card-val_v101">08</span>
+                    </div>
+                </div>
+                <div class="status-card_v101 card-rose_v101">
+                    <div class="circle-bg_v101"></div>
+                    <div class="card-icon-box_v101">⚠️</div>
+                    <div>
+                        <p class="label_v101">Delayed</p>
+                        <span class="card-val_v101">03</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADVANCE SEARCH (Responsive Grid) -->
+            <div class="filter-grid_v101" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); align-items: end;">
+                <div class="form-group_v101"><label class="label_v101">Category</label><select class="select_v101"><option>Chassis Number</option></select></div>
+                <div class="form-group_v101"><label class="label_v101">Value</label><input type="text" class="input_v101" placeholder="ID..."></div>
+                <div class="form-group_v101"><label class="label_v101">Model</label><select class="select_v101"><option>CASTROLION</option></select></div>
+                <div class="form-group_v101"><label class="label_v101">Status</label><select class="select_v101"><option>Open</option></select></div>
+                <button class="btn-submit_v101" style="height: 32px; padding: 0;">Search</button>
+            </div>
+
+            <!-- GRID -->
+            <div class="table-container_v101">
+                <div class="table-header_v101">
+                    <div class="indicator_v101"></div>
+                    <h4 class="title_v101" style="font-size: 13px;">Master Job Cards Grid</h4>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="master-table_v101">
+                        <thead>
+                            <tr>
+                                <th>JC Date / Reference</th>
+                                <th>Complaint Type</th>
+                                <th>Chassis No</th>
+                                <th>Model</th>
+                                <th>Ticket No</th>
+                                <th>Status</th>
+                                <th style="text-align:center;">Control</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr onclick="openDetailView_v101()" style="cursor:pointer;">
+                                <td><span style="display:block; color:#000;">01/01/2022</span><span style="font-size:9px; color:#94a3b8;">#JC-9981</span></td>
+                                <td>Direct Complaint</td>
+                                <td><span style="background:#eff6ff; color:#2563eb; padding:2px 6px; border-radius:4px; font-family:monospace;">FJ-6x4-4020-5854</span></td>
+                                <td>CASTROLION</td>
+                                <td>EO3/6763642</td>
+                                <td><span class="status-pill_v101">Open</span></td>
+                                <td style="text-align:center;">
+                                    <button class="btn-action_v101">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- JOB CARD DETAIL VIEW -->
+    <!-- ========================================== -->
+    <div id="detailView_v101" class="view-hidden_v101">
+        <header class="header_v101">
+            <div class="header-left_v101">
+                <button onclick="closeDetailView_v101()" style="background:none; border:none; color:white; cursor:pointer; padding:5px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <div>
+                    <h1 class="header-title_v101" style="font-size: 14px;">Console Detail</h1>
+                    <span style="font-size: 9px; opacity: 0.7;">Ref: #JC-9981</span>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button onclick="closeDetailView_v101()" class="tab-btn_v101" style="color:white; border:1px solid rgba(255,255,255,0.3); padding:5px 15px; height: 32px; display: flex; align-items:center;">Discard</button>
+                <button class="btn-submit_v101" style="padding:0 15px; height: 32px; background:white; color:var(--primary_v101);">Save</button>
+            </div>
+        </header>
+
+        <div class="detail-layout_v101">
+            <!-- SIDEBAR -->
+            <aside id="sidebar_v101" class="sidebar-detail_v101">
+                <div class="sidebar-toggle_v101" onclick="toggleSidebarSize_v101()">
+                    <svg id="arrow_v101" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+                </div>
+
+                <!-- SECTION VC -->
+                <div class="accordion-item_v101">
+                    <div class="acc-header_v101" onclick="toggleAccordion_v101(this)">
+                        <span class="acc-text_v101">Vehicle Context</span>
+                        <span class="short-code_v101">VC</span>
+                        <svg class="acc-icon_v101" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><path d="m19 9-7 7-7-7"/></svg>
+                    </div>
+                    <div class="acc-content_v101 active">
+                        <div class="side-info-box_v101"><label class="side-label_v101">VIN/Engine</label><p class="side-value_v101">GDS3242 / 342342SDF</p></div>
+                        <div class="side-info-box_v101"><label class="side-label_v101">Last JC No.</label><p class="side-value_v101">#24234</p></div>
+                        <div class="side-info-box_v101"><label class="side-label_v101">Model</label><p class="side-value_v101">CASTROLION-X1</p></div>
+                        <div class="side-info-box_v101"><label class="side-label_v101">Date</label><p class="side-value_v101">12-Oct-2023</p></div>
+                    </div>
+                </div>
+
+                <!-- SECTION ID -->
+                <div class="accordion-item_v101">
+                    <div class="acc-header_v101" onclick="toggleAccordion_v101(this)">
+                        <span class="acc-text_v101">Intimation Info</span>
+                        <span class="short-code_v101">ID</span>
+                        <svg class="acc-icon_v101" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><path d="m19 9-7 7-7-7"/></svg>
+                    </div>
+                    <div class="acc-content_v101">
+                        <div class="side-info-box_v101"><label class="side-label_v101">Date</label><p class="side-value_v101">22-Dec-2023</p></div>
+                        <div class="side-info-box_v101"><label class="side-label_v101">From</label><p class="side-value_v101">Dealer</p></div>
+                        <div class="side-info-box_v101"><label class="side-label_v101">Status</label><p class="side-value_v101" style="color:orange;">Down</p></div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN FORM -->
+            <main class="main-content_v101">
+                <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+                    
+                    <!-- Visit Card -->
+                    <section class="detail-card_v101">
+                        <div class="card-title-wrap_v101">
+                            <div class="indicator_v101"></div>
+                            <h3 class="title_v101">Visit & Parts Log</h3>
+                        </div>
+                        <div class="form-row_v101">
+                            <div class="form-group_v101"><label class="label_v101">Claim Type</label><select class="select_v101"><option>Warranty</option></select></div>
+                            <div class="form-group_v101"><label class="label_v101">Visit Date</label><input type="date" class="input_v101"></div>
+                            <div class="form-group_v101"><label class="label_v101">Current HMR</label><input type="number" class="input_v101" placeholder="HMR"></div>
+                            <div class="form-group_v101">
+                                <label class="label_v101">Meter Working?</label>
+                                <div class="radio-group_v101">
+                                    <div class="radio-item_v101"><input type="radio" name="mw" id="y1" checked><label for="y1" class="radio-label_v101">YES</label></div>
+                                    <div class="radio-item_v101"><input type="radio" name="mw" id="n1"><label for="n1" class="radio-label_v101">NO</label></div>
+                                </div>
+                            </div>
+                            <div class="form-group_v101"><label class="label_v101">Total Hours</label><input type="text" class="input_v101" readonly style="background:#eee;"></div>
+                        </div>
+                    </section>
+
+                    <!-- Purchase Grid -->
+                    <section class="detail-card_v101">
+                        <div class="card-title-wrap_v101">
+                            <div class="indicator_v101" style="background:orange;"></div>
+                            <h3 class="title_v101">Local Purchase</h3>
+                        </div>
+                        <div style="overflow-x: auto;">
+                            <table class="inner-table_v101">
+                                <thead>
+                                    <tr><th>Order</th><th>Code</th><th>Aggregate</th><th>Stock</th><th>Qty</th><th>Value</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>LP-Cash</td><td>ITM-99</td><td>Lubricants</td><td>12</td><td><input type="number" value="2" style="width:40px; border:1px solid #ddd; padding: 2px;"></td><td>4,500</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Closure -->
+                    <section class="detail-card_v101 closure-section_v101">
+                        <div class="card-title-wrap_v101">
+                            <div class="indicator_v101" style="background:#10b981;"></div>
+                            <h3 class="title_v101">Closure Protocol</h3>
+                        </div>
+                        <div class="form-row_v101">
+                            <div class="form-group_v101"><label class="label_v101">Repaired Date</label><input type="date" class="input_v101"></div>
+                            <div class="form-group_v101"><label class="label_v101">Engineer</label><select class="select_v101"><option>MURUGESAN</option></select></div>
+                            <div class="form-group_v101"><label class="label_v101">Remarks</label><input type="text" class="input_v101" placeholder="Action Taken..."></div>
+                        </div>
+                        <div style="margin-top:20px;" class="upload-box_v101">
+                            <span class="label_v101">Upload FSR / Embossing Photo</span>
+                        </div>
+                        <div style="display:flex; justify-content: center; margin-top:30px;">
+                            <button class="btn-submit_v101" style="border-radius: 30px; width: 200px;">Submit & Close</button>
+                        </div>
+                    </section>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function openDetailView_v101() {
+            document.getElementById('listView_v101').classList.add('view-hidden_v101');
+            document.getElementById('detailView_v101').classList.remove('view-hidden_v101');
+            window.scrollTo(0,0);
+        }
+
+        function closeDetailView_v101() {
+            document.getElementById('detailView_v101').classList.add('view-hidden_v101');
+            document.getElementById('listView_v101').classList.remove('view-hidden_v101');
+            window.scrollTo(0,0);
+        }
+
+        function toggleSidebarSize_v101() {
+            const sidebar = document.getElementById('sidebar_v101');
+            const icon = document.getElementById('arrow_v101');
+            sidebar.classList.toggle('sidebar-collapsed_v101');
+            icon.style.transform = sidebar.classList.contains('sidebar-collapsed_v101') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function toggleAccordion_v101(header) {
+            const sidebar = document.getElementById('sidebar_v101');
+            // If sidebar is collapsed, expand it first
+            if(sidebar.classList.contains('sidebar-collapsed_v101')) {
+                toggleSidebarSize_v101();
+            }
+
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.acc-icon_v101');
+            
+            if (!content.classList.contains('active')) {
+                content.classList.add('active');
+                if(icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.remove('active');
+                if(icon) icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
