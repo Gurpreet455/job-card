@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Job Card Dashboard</title>
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"> -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
         /* --- CSS VARIABLES & THEME ENGINE --- */
         :root {
             /* Theme 1: 3D Red (Default) - Vibrant & 3D */
@@ -20,7 +21,7 @@
             --bg-input_v101: #ffffff;
             --text-main_v101: #1e293b;
             --text-muted_v101: #64748b;
-            --border-main_v101: #fecaca;
+            --border-main_v101: #cccccc;
             --sidebar-bg_v101: #ffffff;
             --tab-bg_v101: #fee2e2;
             --radius_v101: 6px;
@@ -69,10 +70,11 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+              font-family: "Google Sans", sans-serif;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            /* font-family: 'Inter', sans-serif; */
             background-color: var(--bg-body_v101);
             color: var(--text-main_v101);
             overflow-x: hidden;
@@ -199,7 +201,7 @@
         /* FILTER CARD */
         .card_v101 {
             background: var(--bg-card_v101);
-            border: 1px solid var(--border-main_v101);
+            /* border: 1px solid var(--border-main_v101); */
             border-radius: var(--radius_v101);
             padding: 15px;
             margin-bottom: 15px;
@@ -207,16 +209,17 @@
         }
 
         .grid-3_v101 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            /* grid-template-columns: repeat(3, 1fr); */
             gap: 12px;
         }
 
-        .form-group_v101 {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
+      .form-group_v101 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 240px;
+}
 
         .lbl_v101 {
             font-size: 9px;
@@ -226,20 +229,18 @@
             letter-spacing: 0.5px;
         }
 
-        .inp_v101,
-        .sel_v101 {
-            width: 100%;
-            height: 30px;
-            /* Small height */
-            padding: 0 10px;
-            border: 1px solid var(--border-main_v101);
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            background-color: var(--bg-input_v101);
-            color: var(--text-main_v101);
-            outline: none;
-        }
+.inp_v101, .sel_v101 {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #c3c3c3;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: var(--bg-input_v101);
+    color: var(--text-main_v101);
+    outline: none;
+}
 
         .inp_v101:focus,
         .sel_v101:focus {
@@ -249,29 +250,28 @@
         /* TABS (Full Width BG, Auto Width Buttons) */
         .tabs-row_v101 {
             width: 100%;
-            background: var(--tab-bg_v101);
+            background: #2b2b2c;
             padding: 4px;
             border-radius: var(--radius_v101);
             display: flex;
             gap: 5px;
             margin-bottom: 15px;
-            border: 1px solid var(--border-main_v101);
+            /* border: 1px solid var(--border-main_v101); */
         }
 
-        .tab_v101 {
-            padding: 8px 20px;
-            border: none;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            background: transparent;
-            color: var(--text-muted_v101);
-            width: auto;
-            /* Width based on content */
-            transition: 0.2s;
-        }
+     .tab_v101 {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #d9d9d9;
+    color: #000000;
+    width: auto;
+    transition: 0.2s;
+}
 
         .tab_v101.active {
             background: #ef4444;
@@ -280,27 +280,27 @@
         }
 
         /* STATS CARDS (3D) */
-        .stats-row_v101 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 15px;
-        }
+      .stats-row_v101 {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
 
-        .stat-card_v101 {
-            background: var(--bg-card_v101);
-            padding: 12px;
-            border-radius: var(--radius_v101);
-            border: 1px solid var(--border-main_v101);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-        }
+   .stat-card_v101 {
+    background: var(--bg-card_v101);
+    padding: 12px;
+    border-radius: var(--radius_v101);
+    border: 1px solid var(--border-main_v101);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    width: 200px;
+}
 
         .stat-circle_v101 {
             position: absolute;
@@ -360,8 +360,8 @@
             text-align: center;
         }
 .grid-table_v101 th {
-    font-size: 9px;
-    font-weight: 900;
+    font-size: 11px;
+    font-weight: 600;
     color: #fff;
     text-transform: uppercase;
     padding: 10px;
@@ -369,12 +369,13 @@
     background: #242121;
 }
 
-        .grid-table_v101 td {
-            padding: 10px;
-            font-size: 11px;
-            font-weight: 600;
-            border-bottom: 1px solid var(--bg-body_v101);
-        }
+     .grid-table_v101 td {
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    /* border-bottom: 1px solid var(--bg-body_v101); */
+    border: 1px solid #ccc;
+}
 
         .grid-table_v101 tr:hover {
             background: var(--highlight_v101);
@@ -477,8 +478,8 @@
 
         /* Highlighted Info Box (Sidebar) */
         .info-box_v101 {
-            background: var(--highlight_v101);
-            border: 1px solid var(--border-main_v101);
+            background: linear-gradient(135deg, #64748b 0%, #1e293b 100%);
+            /* border: 1px solid var(--border-main_v101); */
             border-radius: 6px;
             padding: 6px 10px;
             margin-bottom: 6px;
@@ -490,18 +491,18 @@
         }
 
         .info-lbl_v101 {
-            font-size: 8px;
-            font-weight: 800;
-            color: var(--text-muted_v101);
+          font-size: 10px;
+    font-weight: 600;
+            color: #fff;
             text-transform: uppercase;
             margin-bottom: 2px;
         }
 
-        .info-val_v101 {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-main_v101);
-        }
+       .info-val_v101 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+}
 
         /* MAIN EDIT AREA */
         .edit-area_v101 {
@@ -515,7 +516,7 @@
             background: white;
             border-radius: var(--radius_v101);
             padding: 20px;
-            border: 1px solid var(--border-main_v101);
+            border: 1px solid #dcdcdc;
             margin-bottom: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
         }
@@ -531,8 +532,8 @@
         }
 
         .form-row_v101 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
             gap: 15px;
         }
 
@@ -586,7 +587,12 @@
         .btn-save_v101:hover {
             transform: translateY(-2px);
         }
-
+.wrg_v101 {
+    display: flex;
+    align-items: baseline;
+    flex-direction: row-reverse;
+    gap: 0px 8px;
+}
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .stats-row_v101 {
@@ -686,22 +692,22 @@
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-blue_v101"></div>
                     <div style="font-size: 20px;">📋</div>
-                    <div><label class="lbl_v101">In Progress</label><span class="stat-val_v101">42</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">In Progress</label><span class="stat-val_v101">42</span></div>
                 </div>
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-amber_v101"></div>
                     <div style="font-size: 20px;">⏳</div>
-                    <div><label class="lbl_v101">Pending</label><span class="stat-val_v101">15</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">Pending</label><span class="stat-val_v101">15</span></div>
                 </div>
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-green_v101"></div>
                     <div style="font-size: 20px;">✅</div>
-                    <div><label class="lbl_v101">Ready</label><span class="stat-val_v101">08</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">Ready</label><span class="stat-val_v101">08</span></div>
                 </div>
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-red_v101"></div>
                     <div style="font-size: 20px;">⚠️</div>
-                    <div><label class="lbl_v101">Delayed</label><span class="stat-val_v101">03</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">Delayed</label><span class="stat-val_v101">03</span></div>
                 </div>
             </div>
 
@@ -716,7 +722,7 @@
                 <div class="form-group_v101"><label class="lbl_v101">Status</label><select class="sel_v101">
                         <option>Open</option>
                     </select></div>
-                <button class="btn-save_v101" style="height: 30px; font-size: 10px; padding: 0;">Search</button>
+                <button class="btn-save_v101" >Search</button>
             </div>
 
             <!-- MAIN DATA TABLE -->
@@ -736,7 +742,7 @@
                         <tr onclick="goToDetail_v101()" style="cursor:pointer;">
                             <td><b>01/01/2022</b><br><span style="font-size:9px; color:#94a3b8;">#JC-9981</span></td>
                             <td>Direct</td>
-                            <td><span style="font-family:monospace; color:var(--primary_v101);">FJ-6x4-4020-5854</span>
+                            <td><span style="color:var(--primary_v101);">FJ-6x4-4020-5854</span>
                             </td>
                             <td>CASTROLION-X1</td>
                             <td><span class="status-pill_v101">Open</span></td>
@@ -854,21 +860,21 @@
                         </div>
                     </div>
 
-                    <div class="edit-card_v101" style="background: #1e293b; color: white;">
-                        <div class="card-title-v101" style="border-color:#10b981; color:white;">JC Closure Protocol
+                    <div class="edit-card_v101" >
+                        <div class="card-title-v101" style="border-color:#10b981;">JC Closure Protocol
                         </div>
                         <div class="form-row_v101">
                             <div class="form-group_v101"><label class="lbl_v101" style="color:#94a3b8;">Repaired
                                     Date</label><input type="date" class="inp_v101"
-                                    style="background:#334155; border-color:#475569; color:white;"></div>
+                                    ></div>
                             <div class="form-group_v101"><label class="lbl_v101" style="color:#94a3b8;">Assign
                                     Engineer</label><select class="sel_v101"
-                                    style="background:#334155; border-color:#475569; color:white;">
+                                    >
                                     <option>MURUGESAN</option>
                                 </select></div>
                             <div class="form-group_v101" style="grid-column: span 1;"><label class="lbl_v101"
                                     style="color:#94a3b8;">Final Remarks</label><input type="text" class="inp_v101"
-                                    style="background:#334155; border-color:#475569; color:white;"
+                                    
                                     placeholder="Action Taken..."></div>
                         </div>
                         <div style="margin-top:25px; display:flex; justify-content: center;">
