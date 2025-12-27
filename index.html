@@ -9,18 +9,18 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet"> -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
         /* --- CSS VARIABLES & THEME ENGINE --- */
         :root {
-            /* Theme 1: 3D Red (Default) - Vibrant & 3D */
-            --primary_v101: #dc2626;
+            --primary_v101: #c4191f;
             --primary-dark_v101: #991b1b;
-            --primary-3d_v101: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);
+            --primary-3d_v101: linear-gradient(135deg, #db1a21 0%, #741518 100%);
             --bg-body_v101: #fff5f5;
             --bg-card_v101: #ffffff;
             --bg-input_v101: #ffffff;
             --text-main_v101: #1e293b;
-            --text-muted_v101: #64748b;
+            --text-muted_v101: #7c7c7c;
             --border-main_v101: #cccccc;
             --sidebar-bg_v101: #ffffff;
             --tab-bg_v101: #fee2e2;
@@ -31,24 +31,24 @@
 
         /* Theme 2: Professional Blue */
         [data-theme="blue_v101"] {
-            --primary_v101: #2563eb;
-            --primary-dark_v101: #1e3a8a;
-            --primary-3d_v101: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-            --bg-body_v101: #f0f7ff;
-            --border-main_v101: #bfdbfe;
-            --tab-bg_v101: #dbeafe;
+            --primary_v101: #dda439;
+            --primary-dark_v101: #b8882d;
+            --primary-3d_v101: linear-gradient(135deg, #f5b741 0%, #936b20 100%);
+            --bg-body_v101: #fff4e0;
+            --border-main_v101: #ffe1a8;
+            --tab-bg_v101: #cb9633;
             --highlight_v101: #eff6ff;
             --shadow-v101: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
         }
 
         /* Theme 3: Forest Green */
         [data-theme="green_v101"] {
-            --primary_v101: #16a34a;
-            --primary-dark_v101: #14532d;
-            --primary-3d_v101: linear-gradient(135deg, #22c55e 0%, #14532d 100%);
+            --primary_v101: #129c9f;
+            --primary-dark_v101: #00aaad;
+            --primary-3d_v101: linear-gradient(135deg, #11a39a 0%, #0d9093 100%);
             --bg-body_v101: #f0fdf4;
-            --border-main_v101: #bbf7d0;
-            --tab-bg_v101: #dcfce7;
+            --border-main_v101: #47cccf;
+            --tab-bg_v101: #d4feff;
             --highlight_v101: #f0fdf4;
             --shadow-v101: 0 10px 15px -3px rgba(22, 163, 74, 0.1);
         }
@@ -70,11 +70,10 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-              font-family: "Google Sans", sans-serif;
+            font-family: "Google Sans", sans-serif;
         }
 
         body {
-            /* font-family: 'Inter', sans-serif; */
             background-color: var(--bg-body_v101);
             color: var(--text-main_v101);
             overflow-x: hidden;
@@ -168,11 +167,11 @@
         }
 
         .dot-blue_v101 {
-            background: #2563eb;
+            background: #b8882d;
         }
 
         .dot-green_v101 {
-            background: #16a34a;
+            background: #00aaad;
         }
 
         .dot-slate_v101 {
@@ -210,37 +209,56 @@
 
         .grid-3_v101 {
             display: flex;
-            /* grid-template-columns: repeat(3, 1fr); */
             gap: 12px;
+            align-items: end;
+            flex-wrap: wrap;
         }
 
-      .form-group_v101 {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 240px;
-}
+        .form-group_v101 {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 220px;
+        }
 
-        .lbl_v101 {
+        .lbl_v101,
+        .radio-group_v101 label {
+            font-family: 'Inter', sans-serif;
             font-size: 9px;
-            font-weight: 800;
+            font-weight: 700;
             text-transform: uppercase;
             color: var(--text-muted_v101);
             letter-spacing: 0.5px;
         }
 
-.inp_v101, .sel_v101 {
-    width: 100%;
-    height: 30px;
-    padding: 0 10px;
-    border: 1px solid #c3c3c3;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    background-color: var(--bg-input_v101);
-    color: var(--text-main_v101);
-    outline: none;
-}
+        .radio-group_v101 label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+
+        .radio-group_v101 {
+            height: 29px;
+            display: flex;
+            align-items: center;
+            padding: 5px 6px;
+            gap: 10px;
+        }
+
+        .inp_v101,
+        .sel_v101 {
+            width: 100%;
+            height: 30px;
+            padding: 4px 6px;
+            border: 1px solid #c3c3c3;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: var(--bg-input_v101);
+            color: var(--text-main_v101);
+            outline: none;
+        }
 
         .inp_v101:focus,
         .sel_v101:focus {
@@ -259,19 +277,19 @@
             /* border: 1px solid var(--border-main_v101); */
         }
 
-     .tab_v101 {
-    padding: 8px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    background: #d9d9d9;
-    color: #000000;
-    width: auto;
-    transition: 0.2s;
-}
+        .tab_v101 {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: #d9d9d9;
+            color: #000000;
+            width: auto;
+            transition: 0.2s;
+        }
 
         .tab_v101.active {
             background: #ef4444;
@@ -280,27 +298,27 @@
         }
 
         /* STATS CARDS (3D) */
-      .stats-row_v101 {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 15px;
-}
+        .stats-row_v101 {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
 
-   .stat-card_v101 {
-    background: var(--bg-card_v101);
-    padding: 12px;
-    border-radius: var(--radius_v101);
-    border: 1px solid var(--border-main_v101);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-    width: 200px;
-}
+        .stat-card_v101 {
+            background: var(--bg-card_v101);
+            padding: 12px;
+            border-radius: var(--radius_v101);
+            border: 1px solid var(--border-main_v101);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            width: 200px;
+        }
 
         .stat-circle_v101 {
             position: absolute;
@@ -359,23 +377,24 @@
             border-collapse: collapse;
             text-align: center;
         }
-.grid-table_v101 th {
-    font-size: 11px;
-    font-weight: 600;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 10px;
-    border-bottom: 2px solid var(--bg-body_v101);
-    background: #242121;
-}
 
-     .grid-table_v101 td {
-    padding: 10px;
-    font-size: 12px;
-    font-weight: 600;
-    /* border-bottom: 1px solid var(--bg-body_v101); */
-    border: 1px solid #ccc;
-}
+        .grid-table_v101 th {
+            font-size: 11px;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            padding: 10px;
+            border-bottom: 2px solid var(--bg-body_v101);
+            background: #242121;
+        }
+
+        .grid-table_v101 td {
+            padding: 8px 2px;
+            font-size: 12px;
+            font-weight: 600;
+            /* border-bottom: 1px solid var(--bg-body_v101); */
+            border: 1px solid #ccc;
+        }
 
         .grid-table_v101 tr:hover {
             background: var(--highlight_v101);
@@ -388,6 +407,14 @@
             border-radius: 20px;
             font-size: 10px;
             font-weight: 800;
+        }
+
+        p.section-subtitle_v101 {
+            font-size: 12px;
+            text-transform: capitalize;
+            font-weight: bolder;
+            margin: 10px 0px 3px;
+            color: #293447;
         }
 
         /* --- DETAIL VIEW (EDIT) --- */
@@ -491,18 +518,18 @@
         }
 
         .info-lbl_v101 {
-          font-size: 10px;
-    font-weight: 600;
+            font-size: 10px;
+            font-weight: 600;
             color: #fff;
             text-transform: uppercase;
             margin-bottom: 2px;
         }
 
-       .info-val_v101 {
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
-}
+        .info-val_v101 {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+        }
 
         /* MAIN EDIT AREA */
         .edit-area_v101 {
@@ -570,7 +597,8 @@
             border-color: var(--primary_v101);
         }
 
-        .btn-save_v101 {
+        .btn-save_v101,
+        .btn-cancel_v101 {
             background: var(--primary-3d_v101);
             color: white;
             border: none;
@@ -582,17 +610,42 @@
             cursor: pointer;
             transition: 0.2s;
             box-shadow: var(--shadow-v101);
+            width: fit-content;
         }
 
-        .btn-save_v101:hover {
+        .btn-save_v101:hover,
+        .btn-cancel_v101:hover {
             transform: translateY(-2px);
         }
-.wrg_v101 {
-    display: flex;
-    align-items: baseline;
-    flex-direction: row-reverse;
-    gap: 0px 8px;
-}
+
+        .wrg_v101 {
+            display: flex;
+            align-items: baseline;
+            flex-direction: row-reverse;
+            gap: 0px 8px;
+        }
+
+        .mandatory {
+            background: moccasin;
+            border-radius: 6px;
+        }
+
+        .autoGenerate {
+            background: #e8e8e8;
+        }
+        .links{
+            display: flex;
+            justify-content: end;
+            gap: 8px;
+
+        }
+        .links a {
+            font-size: 13px;
+            color: var(--primary-3d_v101);
+            font-weight: 800;
+            text-transform: capitalize;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .stats-row_v101 {
@@ -651,14 +704,14 @@
                     <path d="m9 2 5 5-9 9-5-5 9-9z" />
                 </svg>
             </div>
-            <h1 class="header-title_v101">Job Console v2.0</h1>
+            <h1 class="header-title_v101">Job Card</h1>
         </div>
 
         <div style="display: flex; align-items: center;">
             <div class="theme-panel_v101">
                 <div class="theme-dot_v101 dot-red_v101" onclick="applyTheme_v101('red')"></div>
-                <div class="theme-dot_v101 dot-blue_v101" onclick="applyTheme_v101('blue')"></div>
                 <div class="theme-dot_v101 dot-green_v101" onclick="applyTheme_v101('green')"></div>
+                <div class="theme-dot_v101 dot-blue_v101" onclick="applyTheme_v101('blue')"></div>
                 <div class="theme-dot_v101 dot-slate_v101" onclick="applyTheme_v101('slate')"></div>
             </div>
             <div class="user-ico_v101">AD</div>
@@ -683,8 +736,8 @@
 
             <!-- TABS -->
             <div class="tabs-row_v101">
-                <button class="tab_v101 active">Job Card Master List</button>
-                <button class="tab_v101">Complaint Repository</button>
+                <button class="tab_v101 active">Job Card List</button>
+                <button class="tab_v101">Complaint List</button>
             </div>
 
             <!-- STATS -->
@@ -692,37 +745,101 @@
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-blue_v101"></div>
                     <div style="font-size: 20px;">📋</div>
-                    <div class="wrg_v101"><label class="lbl_v101">In Progress</label><span class="stat-val_v101">42</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">In Progress</label><span
+                            class="stat-val_v101">42</span></div>
                 </div>
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-amber_v101"></div>
                     <div style="font-size: 20px;">⏳</div>
-                    <div class="wrg_v101"><label class="lbl_v101">Pending</label><span class="stat-val_v101">15</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">Pending</label><span class="stat-val_v101">15</span>
+                    </div>
                 </div>
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-green_v101"></div>
                     <div style="font-size: 20px;">✅</div>
-                    <div class="wrg_v101"><label class="lbl_v101">Ready</label><span class="stat-val_v101">08</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">Ready</label><span class="stat-val_v101">08</span>
+                    </div>
                 </div>
                 <div class="stat-card_v101">
                     <div class="stat-circle_v101 clr-red_v101"></div>
                     <div style="font-size: 20px;">⚠️</div>
-                    <div class="wrg_v101"><label class="lbl_v101">Delayed</label><span class="stat-val_v101">03</span></div>
+                    <div class="wrg_v101"><label class="lbl_v101">Delayed</label><span class="stat-val_v101">03</span>
+                    </div>
                 </div>
             </div>
 
             <!-- SEARCH GRID -->
-            <div class="card_v101 grid-3_v101"
-                style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); align-items: end;">
-                <div class="form-group_v101"><label class="lbl_v101">Category</label><select class="sel_v101">
+            <div class="card_v101 grid-3_v101">
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">Search On</label>
+                    <select class="sel_v101">
+                        <option value="">Select</option>
+                        <option>JC No</option>
                         <option>Chassis No</option>
-                    </select></div>
-                <div class="form-group_v101"><label class="lbl_v101">Value</label><input type="text" class="inp_v101"
-                        placeholder="ID..."></div>
-                <div class="form-group_v101"><label class="lbl_v101">Status</label><select class="sel_v101">
+                        <option>Customer Name</option>
+                        <option>Ticket No</option>
+                    </select>
+                </div>
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">Value</label>
+                    <input type="text" class="inp_v101" placeholder="Enter value..." />
+                </div>
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">Model</label>
+                    <select class="sel_v101">
+                        <option value="">Select</option>
+                        <option>Kubota MX5100</option>
+                        <option>Kubota MU4501</option>
+                        <option>Kubota L3408</option>
+                    </select>
+                </div>
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">Status</label>
+                    <select class="sel_v101">
+                        <option value="">Select</option>
                         <option>Open</option>
-                    </select></div>
-                <button class="btn-save_v101" >Search</button>
+                        <option>In Progress</option>
+                        <option>Closed</option>
+                    </select>
+                </div>
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">From Date</label>
+                    <input type="date" class="inp_v101" />
+                </div>
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">To Date</label>
+                    <input type="date" class="inp_v101" />
+                </div>
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">Free Service Type</label>
+                    <select class="sel_v101">
+                        <option value="">Select</option>
+                        <option>1st Free</option>
+                        <option>2nd Free</option>
+                        <option>Paid</option>
+                    </select>
+                </div>
+
+                <div class="form-group_v101">
+                    <label class="lbl_v101">Filled By</label>
+                    <select class="sel_v101">
+                        <option value="">Select</option>
+                        <option>Dealer</option>
+                        <option>Service Engineer</option>
+                    </select>
+                </div>
+
+                <div class="form-group_v101" style="align-self:end">
+                    <button class="btn-save_v101">Search</button>
+                </div>
+
             </div>
 
             <!-- MAIN DATA TABLE -->
@@ -730,21 +847,37 @@
                 <table class="grid-table_v101">
                     <thead>
                         <tr>
-                            <th>Date / Ref</th>
-                            <th>Type</th>
+                            <th>Sr.No.</th>
+                            <th>JC Date</th>
+                            <th>JC No</th>
+                            <th>Complaint Type</th>
                             <th>Chassis No</th>
                             <th>Model</th>
+                            <th>Customer Name</th>
+                            <th>Contact No.</th>
+                            <th>Ticket No.</th>
+                            <th>Service engg.</th>
                             <th>Status</th>
-                            <th>Edit</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr onclick="goToDetail_v101()" style="cursor:pointer;">
-                            <td><b>01/01/2022</b><br><span style="font-size:9px; color:#94a3b8;">#JC-9981</span></td>
-                            <td>Direct</td>
-                            <td><span style="color:var(--primary_v101);">FJ-6x4-4020-5854</span>
+                            <td>1</td>
+                            <td>02-Dec-2025</td>
+                            <td>JC-10245</td>
+                            <td>Engine Noise</td>
+                            <td>CHS-889745</td>
+                            <td>Kubota MX5100</td>
+                            <td>Ramesh Kumar</td>
+                            <td>9876543210</td>
+                            <td>TKT-5689</td>
+                            <td>S. Sharma</td>
+                            <!-- <td><b>01/01/2022</b><br><span style="font-size:9px; color:#94a3b8;">#JC-9981</span></td> -->
+                            <!-- <td>Open</td> -->
+
+                            <!-- <td><span style="color:var(--primary_v101);">FJ-6x4-4020-5854</span> -->
                             </td>
-                            <td>CASTROLION-X1</td>
                             <td><span class="status-pill_v101">Open</span></td>
                             <td><button
                                     style="border:none; background:none; font-size:14px; cursor:pointer;">✏️</button>
@@ -771,21 +904,31 @@
                 <!-- Section VC -->
                 <div class="acc-item_v101">
                     <div class="acc-head_v101" onclick="handleAcc_v101(this)">
-                        <span class="acc-text_v101">Vehicle Context</span><span class="acc-short_v101">VC</span>
+                        <span class="acc-text_v101">Machine Details</span><span class="acc-short_v101">MD</span>
                         <svg class="acc-icon_v101" width="10" height="10" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="4">
                             <path d="m19 9-7 7-7-7" />
                         </svg>
                     </div>
                     <div class="acc-content_v101 active">
-                        <div class="info-box_v101"><label class="info-lbl_v101">VIN / Engine</label>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Chassis No. / Engine No.</label>
                             <p class="info-val_v101">GDS3242 / 342342SDF</p>
                         </div>
                         <div class="info-box_v101"><label class="info-lbl_v101">Last JC No.</label>
                             <p class="info-val_v101">#24234</p>
                         </div>
-                        <div class="info-box_v101"><label class="info-lbl_v101">Model</label>
-                            <p class="info-val_v101">CASTROLION-X1</p>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Product / Model</label>
+                            <p class="info-val_v101">F3SFSDF / 24234</p>
+                        </div>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Last JC No.</label>
+                            <p class="info-val_v101">#24234</p>
+                        </div>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Last JC Date</label>
+                            <p class="info-val_v101">12-Nov-2025</p>
+                        </div>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Nature of Complaint / Complaint
+                                No.</label>
+                            <p class="info-val_v101">NOC / #14234</p>
                         </div>
                     </div>
                 </div>
@@ -793,19 +936,27 @@
                 <!-- Section ID -->
                 <div class="acc-item_v101">
                     <div class="acc-head_v101" onclick="handleAcc_v101(this)">
-                        <span class="acc-text_v101">Intimation Details</span><span class="acc-short_v101">ID</span>
+                        <span class="acc-text_v101">Complaint Details</span><span class="acc-short_v101">CD</span>
                         <svg class="acc-icon_v101" width="10" height="10" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="4">
                             <path d="m19 9-7 7-7-7" />
                         </svg>
                     </div>
                     <div class="acc-content_v101">
-                        <div class="info-box_v101"><label class="info-lbl_v101">Intimation Date</label>
-                            <p class="info-val_v101">22-Dec-2023</p>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Intimation Date / Complaint From</label>
+                            <p class="info-val_v101">22-Dec-2023 / Dealer</p>
                         </div>
-                        <div class="info-box_v101"><label class="info-lbl_v101">Engineer</label>
-                            <p class="info-val_v101">MURUGESAN</p>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Ticket Type / HMR</label>
+                            <p class="info-val_v101">Service / 220</p>
                         </div>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Complaint Status / Assign Service
+                                Engineer:</label>
+                            <p class="info-val_v101">Open / Rajesh Kumar</p>
+                        </div>
+                        <div class="info-box_v101"><label class="info-lbl_v101">Machine Status / Call Purpose:</label>
+                            <p class="info-val_v101">Breakdown / Inspection</p>
+                        </div>
+
                     </div>
                 </div>
             </aside>
@@ -813,37 +964,108 @@
             <!-- MAIN EDIT -->
             <main class="edit-area_v101">
                 <div>
+                    <div class="links">
+                        <a href="javascript:void(0)">View Warranty</a>
+                        <a href="javascript:void(0)">View Service History</a>
+                        <a href="javascript:void(0)">Update Customer Details</a>
+                    </div>
                     <div class="edit-card_v101">
-                        <div class="card-title-v101">Visit Log Details</div>
-                        <div class="form-row_v101">
-                            <div class="form-group_v101"><label class="lbl_v101">Claim Type</label><select
-                                    class="sel_v101">
-                                    <option>Standard Warranty</option>
-                                </select></div>
-                            <div class="form-group_v101"><label class="lbl_v101">Visit Date</label><input type="date"
-                                    class="inp_v101" value="2023-12-24"></div>
+                        <div class="card-title-v101">Type of Request</div>
+                        <div class="grid-3_v101">
+                            <!-- <div class="card_v101"> -->
+                            <!-- <div class="grid-4_v101"> -->
+
+                            <!-- Claim Type -->
                             <div class="form-group_v101">
-                                <label class="lbl_v101">Meter Working?</label>
-                                <div class="radio-grp_v101">
-                                    <div class="radio-opt_v101"><input type="radio" name="mw1" id="y" checked><label
-                                            for="y">YES</label></div>
-                                    <div class="radio-opt_v101"><input type="radio" name="mw1" id="n"><label
-                                            for="n">NO</label></div>
+                                <label class="lbl_v101">Claim Type:</label>
+                                <select class="sel_v101 mandatory">
+                                    <option value="">Select</option>
+                                    <option>Warranty</option>
+                                    <option>Free Service</option>
+                                    <option>Paid Service</option>
+                                </select>
+                            </div>
+
+                            <!-- Visit Date -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Visit Date:</label>
+                                <input type="date" class="inp_v101 mandatory">
+                            </div>
+
+                            <!-- Current HMR -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Current HMR:</label>
+                                <input type="text" class="inp_v101 mandatory" placeholder="Enter HMR">
+                            </div>
+
+                            <!-- Meter Working -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Meter Working</label>
+                                <div class="radio-group_v101 mandatory">
+                                    <label><input type="radio" name="meterWorking" checked> Yes</label>
+                                    <label><input type="radio" name="meterWorking"> No</label>
                                 </div>
                             </div>
+
+                            <!-- Hour Meter Changed -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Hour Meter Changed</label>
+                                <div class="radio-group_v101 mandatory">
+                                    <label><input type="radio" name="hmChanged"> Yes</label>
+                                    <label><input type="radio" name="hmChanged" checked> No</label>
+                                </div>
+                            </div>
+
+                            <!-- Last HMR (Grey / Auto) -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Last HMR</label>
+                                <input type="text" class="inp_v101 autoGenerate" value="1180" />
+                            </div>
+
+                            <!-- Total Working Hour (Grey / Auto) -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Total Working Hour</label>
+                                <input type="text" class="inp_v101 autoGenerate" value="65">
+                            </div>
+
+                            <!-- Observation -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Observation:</label>
+                                <input type="text" class="inp_v101 mandatory" placeholder="Enter observation">
+                            </div>
+
+                            <!-- Upload Damage Part Pics -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Upload Damage Part Pics:</label>
+                                <input type="file" class="inp_v101 mandatory">
+                            </div>
+
+                            <!-- Abort -->
+                            <div class="form-group_v101" style="align-self:end">
+                                <button type="button" class="btn-cancel_v101">Abort</button>
+                            </div>
+
+                            <!-- </div> -->
+
+                            <!-- </div> -->
+
                         </div>
                     </div>
 
                     <div class="edit-card_v101">
-                        <div class="card-title-v101">Local Purchase Requisition</div>
+                        <div class="card-title-v101">Part Request Type</div>
+                        <p class="section-subtitle_v101">Part List</p>
                         <div style="overflow-x: auto;">
-                            <table class="grid-table_v101" style="text-align: left;">
+                            <table class="grid-table_v101">
                                 <thead>
                                     <tr>
-                                        <th>Order</th>
-                                        <th>Code</th>
+                                        <th>Order Type</th>
+                                        <th>Item Code</th>
+                                        <th>Description</th>
                                         <th>Aggregate</th>
-                                        <th>Qty</th>
+                                        <th>Checkpoint</th>
+                                        <th>Stock (Dealer)</th>
+                                        <th>Required Qty</th>
                                         <th>Value</th>
                                     </tr>
                                 </thead>
@@ -851,37 +1073,137 @@
                                     <tr>
                                         <td>LP-Cash</td>
                                         <td>ITM-9921</td>
+                                        <td>Oil Filter</td>
                                         <td>Lubricants</td>
-                                        <td><input type="number" value="1" style="width:50px;"></td>
+                                        <td>Engine</td>
+                                        <td>5</td>
+                                        <td>4</td>
                                         <td>1,450.00</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        <p class="section-subtitle_v101">Local Purchase</p>
+                        <table class="grid-table_v101">
+                            <thead>
+                                <tr>
+                                    <th>Item Code</th>
+                                    <th>Description</th>
+                                    <th>Aggregate</th>
+                                    <th>Checkpoint</th>
+                                    <th>Required Qty</th>
+                                    <th>Value</th>
+                                    <th>Upload File</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LP-7712</td>
+                                    <td>Hydraulic Pipe</td>
+                                    <td>Hydraulics</td>
+                                    <td>Lift Arm</td>
+                                    <td>2</td>
+                                    <td>2,200.00</td>
+                                    <td><input type="file"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="section-subtitle_v101">Local Repaired</p>
+                        <table class="grid-table_v101">
+                            <thead>
+                                <tr>
+                                    <th>Aggregate</th>
+                                    <th>Checkpoint</th>
+                                    <th>Value</th>
+                                    <th>Upload File</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" style="text-align:center;color:#777;padding:30px;">
+                                        No data
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="section-subtitle_v101">Transportation</p>
+                        <table class="grid-table_v101">
+                            <thead>
+                                <tr>
+                                    <th>Aggregate</th>
+                                    <th>Checkpoint</th>
+                                    <th>Value</th>
+                                    <th>Upload File</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" style="text-align:center;color:#777;padding:30px;">
+                                        No data
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
 
-                    <div class="edit-card_v101" >
-                        <div class="card-title-v101" style="border-color:#10b981;">JC Closure Protocol
+                    <div class="edit-card_v101">
+                        <div class="card-title-v101" style="border-color:#10b981;">JC Closure
                         </div>
-                        <div class="form-row_v101">
-                            <div class="form-group_v101"><label class="lbl_v101" style="color:#94a3b8;">Repaired
-                                    Date</label><input type="date" class="inp_v101"
-                                    ></div>
-                            <div class="form-group_v101"><label class="lbl_v101" style="color:#94a3b8;">Assign
-                                    Engineer</label><select class="sel_v101"
-                                    >
-                                    <option>MURUGESAN</option>
-                                </select></div>
-                            <div class="form-group_v101" style="grid-column: span 1;"><label class="lbl_v101"
-                                    style="color:#94a3b8;">Final Remarks</label><input type="text" class="inp_v101"
-                                    
-                                    placeholder="Action Taken..."></div>
+                        <div class="grid-3_v101">
+
+                            <!-- Repaired Date -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Repaired date:</label>
+                                <input type="date" class="inp_v101 mandatory">
+                            </div>
+
+                            <!-- No of Visits -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">No. of visits</label>
+                                <input type="number" class="inp_v101 mandatory" placeholder="Enter visits">
+                            </div>
+
+                            <!-- Assign Service Engineer -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Assign Service Engineer</label>
+                                <select class="sel_v101 mandatory">
+                                    <option value="">Select</option>
+                                    <option>Sandeep Sharma</option>
+                                    <option>Amit Verma</option>
+                                    <option>Rohit Gupta</option>
+                                </select>
+                            </div>
+
+                            <!-- Action Taken -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Action Taken</label>
+                                <input type="text" class="inp_v101 mandatory" placeholder="Action performed">
+                            </div>
+
+                            <!-- Remarks -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Remarks:</label>
+                                <input type="text" class="inp_v101 mandatory" placeholder="Enter remarks">
+                            </div>
+
+                            <!-- Upload FSR -->
+                            <div class="form-group_v101">
+                                <label class="lbl_v101">Upload FSR with embossing :</label>
+                                <input type="file" class="inp_v101 mandatory">
+                            </div>
+
+                            <!-- Abort Button -->
+                            <div class="form-group_v101" style="align-self:end">
+                                <button type="button" class="btn-cancel_v101">Abort</button>
+                            </div>
+
                         </div>
-                        <div style="margin-top:25px; display:flex; justify-content: center;">
+                        <!-- <div style="margin-top:25px; display:flex; justify-content: center;">
                             <button class="btn-save_v101"
                                 style="background: #10b981; box-shadow: 0 5px 15px rgba(16,185,129,0.3);">Submit & Close
                                 Job Card</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </main>
