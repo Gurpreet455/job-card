@@ -228,12 +228,12 @@
         }
 
         .page-title-box {
-            background: #e2e8f0;
+            background: var(--primary);
             padding: 12px;
             border-radius: 8px;
             text-align: center;
             font-weight: 700;
-            color: #475569;
+            color: #ffffff;
             margin-bottom: 24px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -366,7 +366,7 @@
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: #0db54f;
             color: white;
         }
 
@@ -375,14 +375,14 @@
             color: white;
         }
 
-        .btn-dark {
-            background: #1e293b;
-            color: white;
-        }
+      .btn-dark {
+    background: #222424;
+    color: white;
+}
 
         .btn-outline {
             background: white;
-            border: 1.5px solid var(--border);
+            border: 1.5px dashed var(--border);
             color: var(--text-main);
         }
 
@@ -399,7 +399,7 @@
         .status-tabs {
             display: flex;
             gap: 8px;
-            margin-top: 24px;
+            margin-top: 4px;
         }
 
         .tab {
@@ -416,6 +416,14 @@
             background: #fffbeb;
             border-color: #fcd34d;
             color: #92400e;
+        }
+
+        .stsbr {
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 16px;
         }
 
         /* Mobile specific fixes */
@@ -484,7 +492,7 @@
 
         .meter-bx {
             border: 1px solid #ddd;
-            padding: 13px;
+            padding: 7px;
             border-radius: 10px;
             background: #f8f8f8;
             width: 200px;
@@ -628,7 +636,7 @@
                 </div>
             </div>
 
-            <div style="display: flex; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+            <div class="stsbr">
                 <div class="meter-bx">
                     <span class="form-label">Meter Working</span>
                     <div style="display: flex; gap: 15px; margin-top: 8px;">
@@ -644,9 +652,12 @@
                 </div>
             </div>
 
-            <div class="status-tabs">
-                <div class="tab active">WIP</div>
-                <div class="tab">Closed</div>
+            <div>
+                <span class="form-label">Job Card Status</span>
+                <div class="status-tabs">
+                    <div class="tab active">WIP</div>
+                    <div class="tab">Closed</div>
+                </div>
             </div>
 
             <div class="footer-bar">
