@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Card Page - Tabbed View</title>
+    <title>Job Card - Tabbed View</title>
     <!-- Modern Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -235,13 +235,13 @@
         }
 
         .page-title-box {
-            background: var(--primary);
-            padding: 12px;
+            /* background: var(--primary); */
+            /* padding: 12px; */
             border-radius: 8px;
-            text-align: center;
+            /* text-align: center; */
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 24px;
+            /* margin-bottom: 24px; */
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
@@ -251,12 +251,12 @@
             background: var(--bg-card);
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 15px;
+            padding: 12px;
             border: 1px solid var(--border);
             margin: 0 auto;
             /* flex: 100%; */
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .summary-item {
@@ -274,7 +274,7 @@
         select,
         textarea {
             width: 100%;
-            padding: 6px 4px;
+            padding: 9px 4px;
             border: 1.5px solid var(--border);
             border-radius: 8px;
             font-size: 0.85rem;
@@ -314,7 +314,7 @@
             background: #f1f5f9;
             padding: 6px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
             width: fit-content;
         }
 
@@ -335,16 +335,16 @@
         }
 
         .main-tab-btn.active {
-            background: white;
-            color: var(--primary);
+            background: #ef4444;
+            color: #ffffff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             /* border: none; */
             border-color: transparent;
         }
 
-        .main-tab-btn.active.close-tab {
+        /* .main-tab-btn.active.close-tab {
             color: var(--danger);
-        }
+        } */
 
         .tab-content {
             display: none;
@@ -504,11 +504,8 @@
         }
 
         .d-flexbx {
-            /* max-width: 1300px; */
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            /* Default Mobile: 1 Column */
+            display: flex;
             gap: 15px;
         }
 
@@ -619,10 +616,61 @@
             width: 50%;
         }
 
-        @media (min-width: 992px) {
+        .form-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .form-content .form-group {
+          width: 100%;
+    max-width: 230px;
+        }
+
+
+        .radiobtncard {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            background: #f8f8f8;
+            /* width: 200px; */
+        }
+
+        .radiobtncard label {
+            font-size: 0.7rem;
+        }
+
+        .jbheader {
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            position: sticky;
+            top: -5px;
+        }
+
+        /* @media (min-width: 992px) {
             .d-flexbx {
                 grid-template-columns: 3fr 1fr;
             }
+        } */
+        .sidebarlft {
+            width: 100%;
+            max-width: 21%;
+            position: fixed;
+            top: 76px;
+            right: 20px;
+        }
+
+        .main-wrapper.collpaseAdded .main-content {
+            width: 73.8%;
+        }
+
+        .main-wrapper .main-content {
+            width: 77%;
         }
 
         @media (max-width: 768px) {
@@ -720,9 +768,20 @@
         </div>
     </aside>
 
-    <main class="main-wrapper">
-        <div class="page-title-box">Job Card Page</div>
+    <main class="main-wrapper" id="mainCont">
+        <div class="jbheader">
 
+            <div class="page-title-box">Job Card</div>
+            <!-- Main Tab Navigation -->
+            <div class="main-tabs-nav">
+                <button class="main-tab-btn active" onclick="openTab(event, 'fvr-tab')"><i
+                        class="fa-solid fa-file-contract"></i> FVR</button>
+                <button class="main-tab-btn" onclick="openTab(event, 'parts-tab')"><i class="fa-solid fa-box-open"></i>
+                    Parts</button>
+                <button class="main-tab-btn close-tab" onclick="openTab(event, 'close-tab')"><i
+                        class="fa-solid fa-circle-check"></i> Close JC</button>
+            </div>
+        </div>
         <div class="card">
             <div class="card-header-actions">
                 <div class="status-group">
@@ -732,20 +791,7 @@
                     <div><span class="form-label">Breakdown</span><input type="text" value="Yes" readonly
                             style="width: 50px; text-align: center;"></div>
                 </div>
-
-                <!-- Main Tab Navigation -->
-                <div class="main-tabs-nav">
-                    <button class="main-tab-btn active" onclick="openTab(event, 'fvr-tab')"><i
-                            class="fa-solid fa-file-contract"></i> FVR</button>
-                    <button class="main-tab-btn" onclick="openTab(event, 'parts-tab')"><i
-                            class="fa-solid fa-box-open"></i> Parts</button>
-                    <button class="main-tab-btn close-tab" onclick="openTab(event, 'close-tab')"><i
-                            class="fa-solid fa-circle-check"></i> Close JC</button>
-                </div>
             </div>
-
-
-
             <!-- TAB: FVR CONTENT -->
             <div id="fvr-tab" class="tab-content active">
                 <div class="form-section">
@@ -808,7 +854,7 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 20px; margin-bottom: 16px; align-items: flex-end; flex-wrap: wrap;">
-                    <div
+                    <!-- <div
                         style="border: 1px solid #ddd; padding: 10px; border-radius: 10px; background: #f8f8f8; width: 200px;">
                         <span class="form-label">Meter Working</span>
                         <div style="display: flex; gap: 15px; margin-top: 8px;">
@@ -819,6 +865,79 @@
                     <div style="width: 100%; max-width: 250px;">
                         <span class="form-label">If Yes → HMR</span>
                         <input type="number" placeholder="0.00">
+                    </div> -->
+                    <div class="form-content">
+                        <!-- Row 1: Special Claim -->
+                        <div class="form-group radiobtncard">
+                            <label class="form-label">Special Claim</label>
+                            <div class="radio-container ">
+                                <label class="radio-group"><input type="radio" name="special_claim"> Yes</label>
+                                <label class="radio-group"><input type="radio" name="special_claim" checked="">
+                                    NO</label>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Claim Type, Visit Date, Current HMR, Meter Working -->
+                        <div class="form-group">
+                            <label class="form-label">Claim Type:</label>
+                            <select>
+                                <option>Paid</option>
+                                <option>Warranty</option>
+                                <option>Free</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Visit Date:</label>
+                            <input type="text" class="error-border" value="09-Jul-2023" placeholder="Select date...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Current HMR:</label>
+                            <input type="text" value="1059" placeholder="Enter HMR...">
+                        </div>
+
+                        <div class="form-group radiobtncard">
+                            <label class="form-label">Meter Working</label>
+                            <div class="radio-container">
+                                <label class="radio-group"><input type="radio" name="meter_working" checked="">
+                                    Yes</label>
+                                <label class="radio-group"><input type="radio" name="meter_working"> NO</label>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Hour Meter Changed, Last HMR, Total Working Hour, Observation -->
+                        <div class="form-group radiobtncard">
+                            <label class="form-label">Hour Meter Changed</label>
+                            <div class="radio-container">
+                                <label class="radio-group"><input type="radio" name="hm_changed"> Yes</label>
+                                <label class="radio-group"><input type="radio" name="hm_changed" checked=""> NO</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Last HMR</label>
+                            <input type="text" value="1059" readonly="">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Total Working Hour</label>
+                            <input type="text" value="1059" readonly="">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Observation:</label>
+                            <input type="text" placeholder="Enter observation...">
+                        </div>
+
+                        <!-- Footer Row: Upload and Buttons -->
+                        <div class="form-group radiobtncard">
+                            <label class="form-label">Upload Damage Part Pics:</label>
+                            <!-- <div class="radio-container"> -->
+                            <input type="file" id="fileInput">
+                            <!-- </div> -->
+                        </div>
+
                     </div>
                 </div>
 
@@ -836,7 +955,6 @@
                     <button class="btn btn-outline"><i class="fa-solid fa-rotate"></i> Reset</button>
                 </div>
             </div>
-
             <!-- TAB: PARTS CONTENT -->
             <div id="parts-tab" class="tab-content">
                 <div class="d-flexbx">
@@ -889,7 +1007,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                
+
                                                 <!-- <td><select>
                                                         <option>Select</option>
                                                     </select></td>
@@ -1091,7 +1209,7 @@
                                 <div class="table-container">
                                     <table>
                                         <thead>
-                                          <tr>
+                                            <tr>
                                                 <th>Order Type</th>
                                                 <!-- <th>Claim</th> -->
                                                 <th>Item Code</th>
@@ -1192,7 +1310,7 @@
                                 <h3>Contribution Split</h3>
                             </div>
                             <div class="card-body">
-                                <div class="split-row" style="margin-bottom: 15px;">
+                                <div class="split-row" >
                                     <div class="summary-item">
                                         <label class="form-label">Dealer %</label>
                                         <input type="number" value="0">
@@ -1221,7 +1339,7 @@
                                 <div class="upload-area">
                                     <input type="file" id="main-upload" hidden="">
                                     <label for="main-upload" style="cursor: pointer;">
-                                        <div style="font-size: 24px; margin-bottom: 10px;">📁</div>
+                                        <!-- <div style="font-size: 24px; margin-bottom: 10px;">📁</div> -->
                                         <strong>Choose Files</strong>
                                     </label>
                                     <p style="margin-top: 10px;">Supported: PDF, JPG, PNG</p>
@@ -1232,7 +1350,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- TAB: CLOSE JC CONTENT -->
             <div id="close-tab" class="tab-content">
                 <div class="form-card">
@@ -1240,7 +1357,7 @@
                         <h3>Job Close</h3>
                     </div>
 
-                    <form class="form-content">
+                    <form class="form-contenttbx">
                         <!-- First Row: Basic Details -->
                         <div class="form-row">
                             <div class="form-group">
@@ -1322,8 +1439,10 @@
         function toggleSidebar(e) {
             if (e) e.stopPropagation();
             const sidebar = document.getElementById('sidebar');
+            const maincont = document.getElementById('mainCont');
             const icon = document.getElementById('toggle-icon');
             sidebar.classList.toggle('collapsed');
+            maincont.classList.toggle('collpaseAdded');
             icon.className = sidebar.classList.contains('collapsed') ? 'fa-solid fa-chevron-right' : 'fa-solid fa-chevron-left';
         }
 
