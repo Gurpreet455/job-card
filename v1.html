@@ -614,9 +614,10 @@
             min-width: 200px;
             max-width: 100%;
         }
+
         .form-group.w50 {
-    width: 50%;
-}
+            width: 50%;
+        }
 
         @media (min-width: 992px) {
             .d-flexbx {
@@ -861,29 +862,35 @@
 
                                 <!-- <h4 style="font-size: 14px; margin: 15px 0 10px;"></h4> -->
                                 <div class="headingcrd">
-                                <h3>1. Part List</h3>
-                            </div>
+                                    <h3>1. Part List</h3>
+                                </div>
                                 <div class="table-container">
                                     <table>
                                         <thead>
                                             <tr>
                                                 <th>Order Type</th>
-                                                <th>Claim</th>
+                                                <!-- <th>Claim</th> -->
                                                 <th>Item Code</th>
-                                                <th>Description</th>
+                                                <th>Item Name</th>
+                                                <!-- <th>Description</th> -->
                                                 <th>Aggregate</th>
-                                                <th>Checkpoint</th>
+                                                <th>Failure Code</th>
+                                                <th>Punch Code / SL No</th>
+                                                <th>Check point</th>
                                                 <th>Stock From</th>
-                                                <th>Req. Qty</th>
+                                                <th>D. Stock</th>
+                                                <th>Req Qty</th>
                                                 <th>Used Qty</th>
-                                                <th>Value (DNP)</th>
-                                                <th>Upload</th>
-                                                <th>Action</th>
+                                                <th>Price (DNP)</th>
+                                                <th>Apr. Qty</th>
+                                                <th>Remarks</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><select>
+                                                
+                                                <!-- <td><select>
                                                         <option>Select</option>
                                                     </select></td>
                                                 <td><select>
@@ -904,7 +911,7 @@
                                                 <td><input type="file" style="font-size: 10px;"></td>
                                                 <td><button class="btn btn-outline"
                                                         style="color: #ffffff;background-color: var(--danger); "><i
-                                                            class="fa-solid fa-trash-can"></i></button></td>
+                                                            class="fa-solid fa-trash-can"></i></button></td> -->
                                             </tr>
                                         </tbody>
                                     </table>
@@ -925,20 +932,29 @@
                                         <thead>
                                             <tr>
                                                 <th>Order Type</th>
+                                                <!-- <th>Claim</th> -->
                                                 <th>Item Code</th>
-                                                <th>Description</th>
+                                                <th>Item Name</th>
+                                                <!-- <th>Description</th> -->
                                                 <th>Aggregate</th>
-                                                <th>Checkpoint</th>
-                                                <th>Req. Qty</th>
+                                                <th>Failure Code</th>
+                                                <th>Punch Code / SL No</th>
+                                                <th>Check point</th>
+                                                <!-- <th>Stock From</th> -->
+                                                <!-- <th>D. Stock</th> -->
+                                                <th>Req Qty</th>
                                                 <th>Used Qty</th>
-                                                <th>Value (DNP)</th>
-                                                <th>Upload</th>
-                                                <th>Action</th>
+                                                <th>Price (In market)</th>
+                                                <th>Upload Doc</th>
+                                                <!-- <th>Price (In market)</th> -->
+                                                <th>Apr. Qty</th>
+                                                <th>Remarks</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><select>
+                                                <!-- <td><select>
                                                         <option>Select</option>
                                                     </select></td>
 
@@ -955,7 +971,7 @@
                                                 <td><input type="file" style="font-size: 10px;"></td>
                                                  <td><button class="btn btn-outline"
                                                         style="color: #ffffff;background-color: var(--danger); "><i
-                                                            class="fa-solid fa-trash-can"></i></button></td>
+                                                            class="fa-solid fa-trash-can"></i></button></td> -->
                                             </tr>
                                         </tbody>
                                     </table>
@@ -974,19 +990,32 @@
                                     <table>
                                         <thead>
                                             <tr>
+                                                <!-- <th>Order Type</th> -->
+                                                <!-- <th>Claim</th> -->
+                                                <th>Item Code</th>
+                                                <th>Item Name</th>
+                                                <!-- <th>Description</th> -->
                                                 <th>Aggregate</th>
-                                                <th>Checkpoint</th>
-                                                <th>Value</th>
-                                                <th>Req. Qty</th>
-                                                <th>Upload</th>
-                                                <th>Action</th>
+                                                <th>Failure Code</th>
+                                                <th>Punch Code / SL No</th>
+                                                <th>Check point</th>
+                                                <!-- <th>Stock From</th> -->
+                                                <!-- <th>D. Stock</th> -->
+                                                <th>Req Qty</th>
+                                                <!-- <th>Used Qty</th> -->
+                                                <th>Price (in Repaired)</th>
+                                                <th>Upload Doc</th>
+                                                <!-- <th>Price (In market)</th> -->
+                                                <!-- <th>Apr. Qty</th> -->
+                                                <th>Remarks</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
 
 
-                                                <td><input type="text" placeholder="Aggregate"></td>
+                                                <!-- <td><input type="text" placeholder="Aggregate"></td>
                                                 <td><input type="text" placeholder="Checkpoint"></td>
 
 
@@ -995,7 +1024,7 @@
                                                 <td><input type="file" style="font-size: 10px;"></td>
                                                  <td><button class="btn btn-outline"
                                                         style="color: #ffffff;background-color: var(--danger); "><i
-                                                            class="fa-solid fa-trash-can"></i></button></td>
+                                                            class="fa-solid fa-trash-can"></i></button></td> -->
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1007,29 +1036,93 @@
                         </div>
                         <div class="card">
                             <div class="headingcrd">
-                                <h3>4. Transportation & Crane Hiring Charges</h3>
+                                <h3>4. Transportation</h3>
                             </div>
                             <div class="card-body">
                                 <div class="table-container">
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Charges Type</th>
-                                                <th>Value</th>
-                                                <th>Upload</th>
-                                                <th>Action</th>
+                                                <th>Order Type</th>
+                                                <!-- <th>Claim</th> -->
+                                                <th>Item Code</th>
+                                                <th>Item Name</th>
+                                                <!-- <th>Description</th> -->
+                                                <th>Aggregate</th>
+                                                <th>Failure Code</th>
+                                                <th>Punch Code / SL No</th>
+                                                <th>Check point</th>
+                                                <!-- <th>Stock From</th> -->
+                                                <!-- <th>D. Stock</th> -->
+                                                <th>Req Qty</th>
+                                                <th>Used Qty</th>
+                                                <th>Price (In market)</th>
+                                                <th>Upload Doc</th>
+                                                <!-- <th>Price (In market)</th> -->
+                                                <th>Apr. Qty</th>
+                                                <th>Remarks</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><select>
+                                                <!-- <td><select>
                                                         <option>Select</option>
                                                     </select></td>
                                                 <td><input type="number" value="0" style="width: 60px;"></td>
                                                 <td><input type="file" style="font-size: 10px;"></td>
                                                  <td><button class="btn btn-outline"
                                                         style="color: #ffffff;background-color: var(--danger); "><i
-                                                            class="fa-solid fa-trash-can"></i></button></td>
+                                                            class="fa-solid fa-trash-can"></i></button></td> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="adrwcrd">
+                                    <button class="btn btn-outline"><i class="fa-solid fa-plus"></i> Add Row</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="headingcrd">
+                                <h3>5. Compensation</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                          <tr>
+                                                <th>Order Type</th>
+                                                <!-- <th>Claim</th> -->
+                                                <th>Item Code</th>
+                                                <th>Item Name</th>
+                                                <!-- <th>Description</th> -->
+                                                <th>Aggregate</th>
+                                                <th>Failure Code</th>
+                                                <th>Punch Code / SL No</th>
+                                                <th>Check point</th>
+                                                <!-- <th>Stock From</th> -->
+                                                <!-- <th>D. Stock</th> -->
+                                                <th>Req Qty</th>
+                                                <th>Used Qty</th>
+                                                <th>Price (In market)</th>
+                                                <th>Upload Doc</th>
+                                                <!-- <th>Price (In market)</th> -->
+                                                <th>Apr. Qty</th>
+                                                <th>Remarks</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <!-- <td><select>
+                                                        <option>Select</option>
+                                                    </select></td>
+                                                <td><input type="number" value="0" style="width: 60px;"></td>
+                                                <td><input type="file" style="font-size: 10px;"></td>
+                                                <td><button class="btn btn-outline"
+                                                        style="color: #ffffff;background-color: var(--danger); "><i
+                                                            class="fa-solid fa-trash-can"></i></button></td> -->
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1057,7 +1150,8 @@
                                 <div class="footer-bar">
                                     <button class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>
                                         Save</button>
-                                    <button class="btn btn-dark"><i class="fa-solid fa-circle-arrow-right"></i> Submit Request</button>
+                                    <button class="btn btn-dark"><i class="fa-solid fa-circle-arrow-right"></i> Submit
+                                        Request</button>
                                     <button class="btn btn-outline"><i class="fa-solid fa-rotate"></i> Reset</button>
                                 </div>
                             </div>
@@ -1143,8 +1237,8 @@
             <div id="close-tab" class="tab-content">
                 <div class="form-card">
                     <div class="headingcrd">
-                                <h3>Job Close</h3>
-                            </div>
+                        <h3>Job Close</h3>
+                    </div>
 
                     <form class="form-content">
                         <!-- First Row: Basic Details -->
